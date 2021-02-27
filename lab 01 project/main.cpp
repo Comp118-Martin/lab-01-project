@@ -14,11 +14,11 @@ void menu();
 
 void Draw_A_Horizontal_line(const int length,const char ch );
 
-void Draw_A_Vertical_line(const int length,const char ch);
+void Draw_A_Vertical_line(const int height,const char ch);
 
 int main()
 {
-    int choice = 0,length = 0,symbol;
+    int choice = 0,length = 0,height=0,symbol;
     
     
     while(choice!=5)
@@ -44,17 +44,19 @@ int main()
         //for vertical line()
         if(choice==2)
         {
-            cout<<"enter the length:"<<endl;
-            cin>>length;
+            cout<<"enter the height:"<<endl;
+            cin>>height;
             
             cout<<"enter a chaaracter here:"<<endl;
             cin>>symbol;
+            
+            Draw_A_Vertical_line(height,symbol);
         }
         
         if(choice==3)
         {
-            cout<<"enther the length:"<<endl;
-            cin>>length;
+            cout<<"enther the height:"<<endl;
+            cin>>height;
             
             cout<<"enter the charater:"<<endl;
             cin>>symbol;
@@ -83,10 +85,12 @@ int main()
 }
 
 
-void Draw_A_vertical_line(const int,const char ch)
+void Draw_A_vertical_line(const int height,const char ch)
 {
-    int length = 0;
-    for(int i=0; i<length; ++i)
+    cout<<"vertical line"<<endl;
+    
+    
+    for(int i=0; i < height; ++i)
     {
         cout<<ch<<endl;
     }
