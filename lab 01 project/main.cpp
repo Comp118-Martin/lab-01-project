@@ -10,30 +10,19 @@
 using namespace std;
 
 
+void menu();
 
-void menu()
-{
-    cout<<"1) draw a horizontal line:"<<endl;
-    
-    cout<<"2) draw a vertical line:"<<endl;
-    
-    cout<<"3) draw a square:"<<endl;
-    
-    cout<<"4) draw a rectangle"<<endl;
-    
-    cout<<"5) quit"<<endl;
-}
+void Draw_A_Horizontal_line(const int length,const char ch );
 
+void Draw_A_Vertical_line(const int length,const char ch);
 
 int main()
 {
-    int choice = 0,length,symbol;
+    int choice = 0,length = 0,symbol;
     
     
     while(choice!=5)
     {
-        
-        
         menu();
         cout<<"enter your choice:"<<endl;
         cin>>choice;
@@ -41,11 +30,14 @@ int main()
         //for horizontal line
         if(choice==1)
         {
+            
             cout<<"enter length:"<<endl;
             cin>>length;
             
             cout<<"enter a character here:"<<endl;
             cin>>symbol;
+            
+            Draw_A_Horizontal_line(length,symbol);
             
         }
         
@@ -83,10 +75,43 @@ int main()
         }
         
         cout<<"bye!"<<endl;
-        
-      }
+    }
     
     
     return 0;
 
+}
+
+
+void Draw_A_vertical_line(const int,const char ch)
+{
+    int length = 0;
+    for(int i=0; i<length; ++i)
+    {
+        cout<<ch<<endl;
+    }
+    cout<<"\n";
+}
+
+void Draw_A_Horizontal_line(const int length,const char ch)
+{
+    
+    for(int i=0; i<length; ++i)
+    {
+        cout<<ch;
+    }
+    cout<<"\n";
+}
+
+void menu()
+{
+    cout<<"1) draw a horizontal line:"<<endl;
+    
+    cout<<"2) draw a vertical line:"<<endl;
+    
+    cout<<"3) draw a square:"<<endl;
+    
+    cout<<"4) draw a rectangle"<<endl;
+    
+    cout<<"5) quit"<<endl;
 }
