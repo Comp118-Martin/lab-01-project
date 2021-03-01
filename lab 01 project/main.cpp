@@ -4,7 +4,6 @@
 //
 //  Created by MARTIN on 26/02/2021.
 //
-
 #include<iostream>
 
 using namespace std;
@@ -22,7 +21,8 @@ void Draw_A_Vertical_line(const int length,const char ch);
 
 int main()
 {
-    int choice = 0,length = 0,height=0, size=0,symbol;
+  int choice = 0,length = 0,height=0, size=0;
+  char symbol;
     
     
     while(choice!=5)
@@ -91,9 +91,10 @@ int main()
         {
             cout<<"invalid input!"<<endl;
         }
-        
-        cout<<"bye!"<<endl;
     }
+      
+    cout<<"bye!"<<endl;
+
     
     
     return 0;
@@ -103,17 +104,17 @@ int main()
 
 void Draw_Rectangle(const int height,const int length,const char ch)
 {
-    for(int length=1; length<=height; length++)
+    for(int length=1; length<=height; length++) // Something wrong here, cannot use length = 1. Maybe int j = 1??
         {
        if(length <= 1)
-       for(int length=1; length<=length; length++)
+       for(int length=1; length<=length; length++) // Something wrong here, cannot use length = 1. Maybe int k = 1??
                 {
                     cout<< ch;
                 }
             else if(length<height)
             {
                 cout<< endl;
-                for(int length2=1; int height2=length; length2++)
+                for(int length2=1; int height2=length; length2++) // Something wrong here, cannot use length2 = 1. Maybe int k=l = 1??
           {
           if(length2==1 || length2==length)
                         cout<< ch;
@@ -158,7 +159,7 @@ void Draw_Square(const int size,const char ch)
      }
 }
 
-void Draw_A_vertical_line(const int length,const char ch)
+void Draw_A_Vertical_line(const int length,const char ch)
 {
     cout<<"vertical line"<<endl;
     
