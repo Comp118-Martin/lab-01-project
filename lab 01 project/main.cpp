@@ -22,7 +22,8 @@ void Draw_A_Vertical_line(const int length,const char ch);
 
 int main()
 {
-    int choice = 0,length = 0,height=0, size=0,symbol;
+    int choice = 0,length = 0,height=0, size=0;
+    char symbol;
     
     
     while(choice!=5)
@@ -103,19 +104,20 @@ int main()
 
 void Draw_Rectangle(const int height,const int length,const char ch)
 {
-    for(int length=1; length<=height; length++)
+    
+    for(int width=1; width<=height; width++)
         {
-       if(length <= 1)
-       for(int length=1; length<=length; length++)
+       if(width <= 1)
+       for(int width=1; width<=height; width++)
                 {
                     cout<< ch;
                 }
-            else if(length<height)
+            else if(width<height)
             {
                 cout<< endl;
-                for(int length2=1; int height2=length; length2++)
+    for(int width2=1; width2<=height; width2++)
           {
-          if(length2==1 || length2==length)
+          if(width2==1 || width2==height)
                         cout<< ch;
                     else
                         cout<< " ";
@@ -124,41 +126,43 @@ void Draw_Rectangle(const int height,const int length,const char ch)
             else
             {
                 cout<< endl;
-    for(int length3=1; length3<=length; length3++)
+    for(int width3=1; width3<=height; width3++)
        {
                     cout<<ch;
                 }//end of for having variable width3
             }// end of else
         }// end of first for loop
-}
+    }// end of main function
+    
+
 
 
 void Draw_Square(const int size,const char ch)
 {
     for(int a=1;a<=10;a++)
-            {
-                cout<<ch;
-            }
-                cout<<endl;
-    for(int b=1;b<=5;b++)
-        {
-        for(int c=1;c<=1;c++)
-            {
+                {
                     cout<<ch;
-            }
-            for(int d=1;d<=8;d++)
-                  {
-                    cout<<" ";
-                  }
-                    cout<<ch<<endl;
-           }
-    for(int e=1;e<=10;e++)
-     {
-     cout<<ch;
-     }
+                }
+                    cout<<endl;
+        for(int b=1;b<=5;b++)
+            {
+            for(int c=1;c<=1;c++)
+                {
+                        cout<<ch;
+                }
+                for(int d=1;d<=8;d++)
+                      {
+                        cout<<" ";
+                      }
+                        cout<<ch<<endl;
+               }
+        for(int e=1;e<=10;e++)
+         {
+         cout<<ch;
+         }
 }
 
-void Draw_A_vertical_line(const int length,const char ch)
+void Draw_A_Vertical_line(const int length,const char ch)
 {
     cout<<"vertical line"<<endl;
     
@@ -167,7 +171,7 @@ void Draw_A_vertical_line(const int length,const char ch)
     {
         cout<<ch<<endl;
     }
-    cout<<"\n";
+    cout<<endl;
 }
 
 void Draw_A_Horizontal_line(const int length,const char ch)
@@ -178,7 +182,7 @@ void Draw_A_Horizontal_line(const int length,const char ch)
         
         cout<<ch;
     }
-    cout<<"\n";
+    cout<<endl;
     
 }
 
