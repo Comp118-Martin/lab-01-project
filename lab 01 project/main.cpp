@@ -1,4 +1,8 @@
-//
+///** \file
+
+
+
+
 //  main.cpp
 //  lab 01 project
 //
@@ -6,11 +10,15 @@
 //
 
 #include<iostream>
-
+#include<cstdlib>
+#include<ctime>
 using namespace std;
 
 
 void menu();
+
+void drawShapes(const int shapeTy[], const int shapeLen[], const char shapeCh[], const int size);
+void initializeArrays(int shapeTY[],int shapeLen[],char shapech[],const int size);
 
 void Draw_Rectangle(const int height, const int length, const char ch);
 
@@ -25,8 +33,14 @@ int main()
     int choice = 0,length = 0,height=0, size=0;
     char symbol;
     
+    const int MAX_ARRAY=10;
     
-    while(choice!=5)
+    int shapeTY[MAX_ARRAY]; int shapeLen[MAX_ARRAY];
+    char shapeCh[MAX_ARRAY];
+    
+    srand(time_t(0));
+    
+    while(choice!=6)
     {
         menu();
         cout<<"enter your choice:"<<endl;
@@ -35,6 +49,7 @@ int main()
         //for horizontal line
         if(choice==1)
         {
+            cout<<"HORIZONTAL LINE"<<endl;
             
             cout<<"enter length:"<<endl;
             cin>>length;
@@ -88,6 +103,12 @@ int main()
             Draw_Rectangle(length,height,symbol);
         }
         
+        if(choice==5)//draws many random shapes from the array
+        {
+            initializeArrays(shapeTY,shapeLen,shapeCh,MAX_ARRAY);
+            drawShapes(shapeTY,shapeLen,shapeCh,MAX_ARRAY);
+        }
+        
         if(choice<0)
         {
             cout<<"invalid input!"<<endl;
@@ -102,6 +123,48 @@ int main()
 }
 
 
+//drwas the shapes in the three arrays
+
+void drawShapes(const int shapeTy[], const int shapeLen[], const char shapeCh[], const int size)
+{
+    for(int i=0;i<size;++i)
+    {
+        if(1==shapeTy[i])//for horizontal line
+        {
+            Draw_A_Horizontal_line(shapeLen[i],shapeCh[i]);
+        }
+        
+        else if(2==shapeTy[i])//for vertical line
+        {
+            Draw_A_Vertical_line(shapeLen[i],shapeCh[i]);
+        }
+        
+        else if(3==shapeTy[i])//for the square
+        {
+           // Draw_Square
+        }
+        
+        else if(4==shapeTy[i])//fro the rectangle
+        {
+            Draw_Rectangle(shapeLen[i],shapeLen[i]*2,shapeCh[i]);
+        }
+    }
+}
+
+// Loops and prints all the shapes that are specified in the arrays
+void initializeArrays(int shapeTY[],int shapeLen[],char shapeCh[],const int size)
+{
+    for(int i=0;i<size;i++)
+    {
+        shapeTY[i]=rand()%4+1;// Fills array shapeTy with values 1 to 4,to indicate which shape type to print
+        
+        shapeLen[i]=rand()%20+1;// Fills array shapeLen with values 1 to 20, the length of the shape
+        
+        shapeCh[i]=rand()%93+33;// Fills array shapeCh with values from the printable ASCII table, i.e. 33 - 126
+    }
+}
+
+//draws the shape of the rectangle
 void Draw_Rectangle(const int height,const int length,const char ch)
 {
     
@@ -136,7 +199,7 @@ void Draw_Rectangle(const int height,const int length,const char ch)
     
 
 
-
+//function to draw the square
 void Draw_Square(const int size,const char ch)
 {
     for(int a=1;a<=10;a++)
@@ -162,6 +225,7 @@ void Draw_Square(const int size,const char ch)
          }
 }
 
+//draws the vertical line
 void Draw_A_Vertical_line(const int length,const char ch)
 {
     cout<<"vertical line"<<endl;
@@ -174,8 +238,10 @@ void Draw_A_Vertical_line(const int length,const char ch)
     cout<<endl;
 }
 
+//draws te horizontal line
 void Draw_A_Horizontal_line(const int length,const char ch)
 {
+    cout<<"horizontal line"<<endl;
     
     for(int i=0; i<length; ++i)
     {
@@ -186,6 +252,7 @@ void Draw_A_Horizontal_line(const int length,const char ch)
     
 }
 
+//the menu function
 void menu()
 {
     cout<<"1) draw a horizontal line:"<<endl;
@@ -196,5 +263,7 @@ void menu()
     
     cout<<"4) draw a rectangle"<<endl;
     
-    cout<<"5) quit"<<endl;
+    cout<<"5) draw many shapes"<<endl;
+    
+    cout<<"6) quit"<<endl;
 }
