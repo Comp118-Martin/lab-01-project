@@ -1,13 +1,16 @@
-///** \file
 
 
 
-
-//  main.cpp
-//  lab 01 project
-//
-//  Created by MARTIN on 26/02/2021.
-//
+/** \file lab 01 project.cpp
+ *  \brief     A little program to draw various types of shapes
+ *  \details   The program illustrates a dynamic array implementation and implementation of some functions
+ *  \author    Martin Ahoto
+ *  \version   0.1
+ *  \date      2021
+ *  \pre       First initialize the system.
+ *  \bug       No bugs so far
+ *  \copyright University of Nicosia.
+ */
 
 #include<iostream>
 #include<cstdlib>
@@ -15,6 +18,7 @@
 using namespace std;
 
 
+//function prototypes
 void menu();
 
 void drawShapes(const int shapeTy[], const int shapeLen[], const char shapeCh[], const int size);
@@ -28,8 +32,12 @@ void Draw_A_Horizontal_line(const int length,const char ch );
 
 void Draw_A_Vertical_line(const int length,const char ch);
 
+
+//driver code
 int main()
 {
+    //declaration of variables
+    
     int choice = 0,length = 0,height=0, size=0;
     char symbol;
     
@@ -38,78 +46,90 @@ int main()
     int shapeTY[MAX_ARRAY]; int shapeLen[MAX_ARRAY];
     char shapeCh[MAX_ARRAY];
     
-    srand(time_t(0));
+    srand(time_t(0)); //generates a seed number to generate random numbers
     
-    while(choice!=6)
+    while(choice!=6)//stops the loop when 6 is been inputed
     {
         menu();
-        cout<<"enter your choice:"<<endl;
+        cout<<"enter your choice:"<<endl;//prompt the user to enter the choice shape he or she wants
         cin>>choice;
         
-        //for horizontal line
-        if(choice==1)
+        //set codes for for horizontal line
+        if(choice==1)//checks if the inputed number is one and prints out its corresponding shape
         {
             cout<<"HORIZONTAL LINE"<<endl;
             
-            cout<<"enter length:"<<endl;
+            cout<<"enter length:"<<endl;//prompts the user to enter the length of the line
             cin>>length;
             
-            cout<<"enter a character here:"<<endl;
+            cout<<"enter a character here:"<<endl;//prompts user to enter the character
             cin>>symbol;
             
-            Draw_A_Horizontal_line(length,symbol);
+            Draw_A_Horizontal_line(length,symbol);//calls the function of the horizontal to be implemented
             
             
             
         }
         
-        //for vertical line()
-        if(choice==2)
+        // set codes for vertical line()
+        if(choice==2) //checks if the inputed number is one and prints out corresponding shape
         {
-            cout<<"enter the height:"<<endl;
+            cout<<"VERTICAL LINE"<<endl;//outputs to the user the type of shape chosen
+            
+            cout<<"enter the height:"<<endl; //prompts user to enter the height of the line
             cin>>length;
             
-            cout<<"enter a chaaracter here:"<<endl;
+            cout<<"enter a chaaracter here:"<<endl;//prompts user to enter the character of the line
             cin>>symbol;
             
-            Draw_A_Vertical_line(length,symbol);
+            Draw_A_Vertical_line(length,symbol);//calls function to implement the shape of the vertical line
         }
         
-        //for sqaure
-        if(choice==3)
+        // set of for sqaure
+        if(choice==3)//checks the number inputed and executes the set of commands corresponding to the number.
         {
-            cout<<"enther the size:"<<endl;
+            cout<<"SQUARE"<<endl;//outputs to the user the name of the shape he or she chose
+            
+            cout<<"enther the size:"<<endl;//prompts user to enter the size of the shape
             cin>>size;
             
-            cout<<"enter the charater:"<<endl;
+            cout<<"enter the charater:"<<endl;//prompts user to enter the character he or she wants the shape to take.
             cin>>symbol;
             
-            Draw_Square(size,symbol);
+            Draw_Square(size,symbol);//calls function of the square to be implemented
             
         }
         
-        //for rectangle
-        if(choice==4)
+        //set of codes for rectangle
+        if(choice==4)//checks the number inputed and executes the set of commands corresponding to the number.
         {
+            cout<<"RECTANGLE"<<endl;//outputs to the user the name of the shape
+            
+            //prompt user to enter the length of the shape
             cout<<"enter the length:"<<endl;
             cin>>length;
             
+            //prompt user to enter the height of the shape
             cout<<"enter height"<<endl;
             cin>>height;
             
+            //prompt user to enter the character of the shape
             cout<<"enter the character here:"<<endl;
             cin>>symbol;
             
+            //calls the function of the rectangle to be implemented
             Draw_Rectangle(length,height,symbol);
         }
         
         if(choice==5)//draws many random shapes from the array
         {
+            //calls the function of the initialization and the drawing of shapes from the array to be implemented
             initializeArrays(shapeTY,shapeLen,shapeCh,MAX_ARRAY);
             drawShapes(shapeTY,shapeLen,shapeCh,MAX_ARRAY);
         }
         
-        if(choice<0)
+        //signals the user of an invalid input
+        if(choice < '0' && choice > '6')
         {
             cout<<"invalid input!"<<endl;
         }
@@ -141,12 +161,12 @@ void drawShapes(const int shapeTy[], const int shapeLen[], const char shapeCh[],
         
         else if(3==shapeTy[i])//for the square
         {
-           // Draw_Square
+            Draw_Square(shapeLen[i],shapeCh[i]);
         }
         
-        else if(4==shapeTy[i])//fro the rectangle
+        else if(4==shapeTy[i])//fro the rectangle   
         {
-            Draw_Rectangle(shapeLen[i],shapeLen[i]*2,shapeCh[i]);
+            Draw_Rectangle(shapeLen[i]*2,shapeLen[i]*2,shapeCh[i]);
         }
     }
 }
@@ -164,10 +184,12 @@ void initializeArrays(int shapeTY[],int shapeLen[],char shapeCh[],const int size
     }
 }
 
-//draws the shape of the rectangle
+//function to draw the shape of the rectangle
 void Draw_Rectangle(const int height,const int length,const char ch)
 {
+    cout<<"I am Draw_Rectangle"<<endl;
     
+    //implementation of a for loop
     for(int width=1; width<=height; width++)
         {
        if(width <= 1)
@@ -191,7 +213,7 @@ void Draw_Rectangle(const int height,const int length,const char ch)
                 cout<< endl;
     for(int width3=1; width3<=height; width3++)
        {
-                    cout<<ch;
+           cout<<ch;
                 }//end of for having variable width3
             }// end of else
         }// end of first for loop
@@ -202,6 +224,9 @@ void Draw_Rectangle(const int height,const int length,const char ch)
 //function to draw the square
 void Draw_Square(const int size,const char ch)
 {
+    cout<<"I am Draw_Square"<<endl;
+    
+    //introducing a for loop
     for(int a=1;a<=10;a++)
                 {
                     cout<<ch;
@@ -221,27 +246,27 @@ void Draw_Square(const int size,const char ch)
                }
         for(int e=1;e<=10;e++)
          {
-         cout<<ch;
+             cout<<ch;
          }
 }
 
-//draws the vertical line
+// function to draw the vertical line
 void Draw_A_Vertical_line(const int length,const char ch)
 {
-    cout<<"vertical line"<<endl;
+    cout<<"I AM Draw_A_Vertical_line"<<endl;
     
-    
+    //introducing a for loop
     for(int i=0; i < length; ++i)
     {
-        cout<<ch<<endl;
+        cout<<ch<<endl;//outputs the character to the user
     }
     cout<<endl;
 }
 
-//draws te horizontal line
+//function to draw the horizontal line
 void Draw_A_Horizontal_line(const int length,const char ch)
 {
-    cout<<"horizontal line"<<endl;
+    cout<<"I am drawHorizontalLine"<<endl;
     
     for(int i=0; i<length; ++i)
     {
